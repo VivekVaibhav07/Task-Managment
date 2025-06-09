@@ -13,7 +13,7 @@ function TaskList({ tasks, onTaskUpdated, onTaskDeleted }) {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.put(
-        `http://localhost:5000/api/tasks/${editingTask._id}`,
+        `https://task-managment-backend-iiu7.onrender.com/api/tasks/${editingTask._id}`,
         editingTask,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -27,7 +27,7 @@ function TaskList({ tasks, onTaskUpdated, onTaskDeleted }) {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+      await axios.delete(`https://task-managment-backend-iiu7.onrender.com/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       onTaskDeleted(id);
