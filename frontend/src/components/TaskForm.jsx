@@ -13,7 +13,7 @@ function TaskForm({ onTaskAdded }) {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post('http://localhost:5000/api/tasks', formData, {
+      const res = await axios.post('https://task-managment-backend-iiu7.onrender.com/api/tasks', formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       onTaskAdded(res.data);
