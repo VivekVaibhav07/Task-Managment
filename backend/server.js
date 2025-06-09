@@ -8,8 +8,20 @@ const taskRoutes = require('./routes/tasks');
 dotenv.config();
 const app = express();
 
-// Middleware
-app.use(cors());
+// ✅ Allow only your frontend origin
+const allowedOrigins = ['https://task-managment-1j0o.onrender.com'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // Routes
