@@ -14,7 +14,7 @@ function AuthForm({ isLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = `http://localhost:5000/api/auth/${isLogin ? 'login' : 'register'}`;
+      const url = `https://task-managment-backend-iiu7.onrender.com/api/auth/${isLogin ? 'login' : 'register'}`;
       const res = await axios.post(url, formData);
       localStorage.setItem('token', res.data.token);
       navigate('/dashboard');
